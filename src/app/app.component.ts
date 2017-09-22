@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Language, LocaleService} from "angular-l10n";
-import {Logger} from "angular2-logger/core";
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @Language() lang: string;
 
-  constructor(public locale: LocaleService,private _logger: Logger
+  constructor(public locale: LocaleService
   ) {
 
   }
@@ -20,12 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
    this.someMultipleFunction();
    this.obFunction();
-
-    this._logger.error('This is a priority level 1 error message...');
-    this._logger.warn('This is a priority level 2 warning message...');
-    this._logger.info('This is a priority level 3 warning message...');
-    this._logger.debug('This is a priority level 4 debug message...');
-    this._logger.log('This is a priority level 5 log message...');
   }
 
   selectLanguage(language: string): void {
