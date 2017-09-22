@@ -6,9 +6,9 @@ import { HomeComponent } from './home/home.component';
 import {HttpModule} from "@angular/http";
 import {LocaleService, LocalizationModule, TranslationService} from "angular-l10n";
 import { MetaModule } from '@ngx-meta/core';
-import {LOG_LOGGER_PROVIDERS} from "angular2-logger/core";
 import {RouterModule} from "@angular/router";
 import {routes} from "./routes";
+import {Ng2CarouselamosModule} from "ng2-carouselamos";
 
 @NgModule({
   declarations: [
@@ -18,11 +18,12 @@ import {routes} from "./routes";
   imports: [
     BrowserModule,
     HttpModule,
+    Ng2CarouselamosModule,
     LocalizationModule.forRoot(),
     RouterModule.forRoot(routes),
     MetaModule.forRoot()
   ],
-  providers: [LOG_LOGGER_PROVIDERS ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
