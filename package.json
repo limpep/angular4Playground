@@ -20,7 +20,7 @@
     "@angular/http": "^4.4.3",
     "@angular/platform-browser": "^4.4.3",
     "@angular/platform-browser-dynamic": "^4.4.3",
-    "@angular/router": "^4.4.3",
+    "@angular/router": "^5.0.0",
     "@ngx-meta/core": "^4.0.1",
     "angular-l10n": "^3.5.1",
     "core-js": "^2.5.1",
