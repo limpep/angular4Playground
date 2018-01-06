@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Language} from "angular-l10n";
+import {Language} from 'angular-l10n';
 
 @Component({
   selector: 'app-home',

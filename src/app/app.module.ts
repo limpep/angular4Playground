@@ -3,12 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {HttpModule} from "@angular/http";
-import {LocaleService, LocalizationModule, TranslationService} from "angular-l10n";
+import {HttpClientModule} from '@angular/common/http';
+import { L10nConfig, L10nLoader, LocalizationModule, StorageStrategy, ProviderType } from 'angular-l10n';
 import { MetaModule } from '@ngx-meta/core';
-import {RouterModule} from "@angular/router";
-import {routes} from "./routes";
-import {Ng2CarouselamosModule} from "ng2-carouselamos";
+import {RouterModule} from '@angular/router';
+import {routes} from './routes';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+
+const l10nConfig: L10nConfig = {
+  locale: {
+      languages: [
+          { code: 'en', dir: 'ltr' },
+          { code: 'it', dir: 'ltr' }
+      ],
+      defaultLocale: { languageCode: 'en', countryCode: 'US' },
+      currency: 'USD',
+      storage: StorageStrategy.Cookie
+  },
+  translation: {
+      providers: [
+          { type: ProviderType.Static, prefix: './assets/locale-' }
+      ],
+      caching: true,
+      missingValue: 'No key'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -17,9 +36,9 @@ import {Ng2CarouselamosModule} from "ng2-carouselamos";
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     Ng2CarouselamosModule,
-    LocalizationModule.forRoot(),
+    LocalizationModule.forRoot(l10nConfig),
     RouterModule.forRoot(routes),
     MetaModule.forRoot()
   ],
@@ -27,15 +46,7 @@ import {Ng2CarouselamosModule} from "ng2-carouselamos";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public locale: LocaleService, public translation: TranslationService) {
-    this.locale.addConfiguration()
-    .addLanguages(['en', 'it', 'tr'])
-    .setCookieExpiration(30)
-    .defineLanguage('en');
-
-    this.translation.addConfiguration()
-    .addProvider('./assets/locale-');
-
-    this.translation.init();
+  constructor(public l10nLoader: L10nLoader) {
+    this.l10nLoader.load();
   }
 }

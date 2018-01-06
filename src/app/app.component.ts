@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {Language, LocaleService} from "angular-l10n";
+import {Observable} from 'rxjs/Observable';
+import {Language, LocaleService} from 'angular-l10n';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private obFunction(){
     const obs = new Observable(function subscriber(observer) {
         const intID  = setInterval(()=>{
-          observer.next("🍕🥞🥙🥘");
+          observer.next('🍕🥞🥙🥘');
         },2000);
 
         return function unsubscribe(){
@@ -39,16 +39,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
     const sub = obs.subscribe(val => console.log(val));
 
-    setTimeout(()=>{
+    setTimeout(() => {
       sub.unsubscribe();
     },5500);
 
   }
 
 
-  private someMultipleFunction(): any{
+  private someMultipleFunction(): any {
 
-    function* a(){
+    function* a() {
     yield 40;
     yield 41;
     return 42;
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
 
